@@ -18,7 +18,7 @@ A tab will be opened in your default browser.
 
 ## Preview
 
-<div align="center"><img src="./src/" alt="scrolling-sample"></div>
+<div align="center"><img src="./src/images/preview.png" alt="scrolling-sample"></div>
 
 
 ### 🛠 Built With
