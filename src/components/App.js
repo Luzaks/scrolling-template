@@ -10,29 +10,41 @@ function App() {
   const app = useRef();
   const scrollContainer = useRef();
 
-  const skewConfigs = {
-    ease: 1,
+  const data = {
+    ease: 0.1,
     current: 0,
     previous: 0,
     rounded: 0
-  }
+  };
 
   useEffect(() => {
-    document.body.style.height = `${scrollContainer.current.getBoundingClientRect().height}px`;
+    requestAnimationFrame(() => skewScrolling());
+  }, []);
+
+  useEffect(() => {
+    setBodyHeight();
   }, [size.height]);
 
-  const skewScrolling = () => {
-    skewConfigs.current = window.scrollY;
-    skewConfigs.previous += (skewConfigs.current - skewConfigs.previous) * skewConfigs.ease;
-    skewConfigs.rounded = Math.round(skewConfigs.previous * 100) / 100;
+  const setBodyHeight = () => {
+    document.body.style.height = `${
+        scrollContainer.current.getBoundingClientRect().height
+    }px`;
+  };
 
-    const difference = skewConfigs.current - skewConfigs.rounded;
+  const skewScrolling = () => {
+    data.current = window.scrollY;
+    data.previous += (data.current - data.previous) * data.ease;
+    data.rounded = Math.round(data.previous * 100) / 100;
+
+
+    const difference = data.current - data.rounded;
     const acceleration = difference / size.width;
     const velocity = +acceleration;
-    const skew = velocity * 7.5;
+    const skew = velocity * 16;
 
-    scrollContainer.current.style.transform = `translate3d(0, -${skewConfigs.rounded}px, 0) skewY(${skew})deg`;
+    scrollContainer.current.style.transform = `translate3d(0, -${data.rounded}px, 0) skewY(${skew}deg)`;
 
+    requestAnimationFrame(() => skewScrolling());
   };
 
   return (
