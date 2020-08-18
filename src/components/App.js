@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.scss';
+import '../styles/App.css';
 
-import images from './images/images';
+import images from '../images/images';
 
 function App() {
   return (
