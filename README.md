@@ -1,4 +1,4 @@
-### Scrolling template.
+# Scrolling template.
 
 This project was created with [Create React App](https://github.com/facebook/create-react-app) and it will be used as a template for future components.
 It consists in a simple scroll animation with skew effects depending on the velocity of the scroll.
